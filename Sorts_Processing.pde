@@ -1,6 +1,7 @@
 //top & bottom are the point vectors for the top and bottom of each line
 PVector top = new PVector(0, 0);
 PVector bottom = new PVector(0, 0);
+//ele is the number of elements
 int ele = 190; 
 //Line holds the functions for creating the lines.
 Line[] original = new Line[ele];
@@ -11,8 +12,6 @@ Line[] temp_array = new Line[ele];
 Line temp = new Line(top, bottom);
 //Sorts holds the functions for sorting
 Sorts sorts = new Sorts();
-//the variable used for random generation
-//ele is the number of elements to sort
 //seconds_x is the x position for "seconds"
 int seconds_x = 40;
 //i is a counter as is j and n. i counts for sorts and j counts the number of frames passed.
@@ -35,9 +34,11 @@ void setup() {
     merge[i] = new Line(top, bottom);
     insertion[i] = new Line(top,bottom);
     temp_array[i] = new Line(top, bottom);
-    top.x += 2;
+    //randomly generate the top y point
     rand = 150 - (int) random(100);
     top.y = rand;
+    //moves the line to the right 2 pixels
+    top.x += 2;
     bottom.x += 2;
   }
 }
@@ -80,21 +81,18 @@ void draw() {
 
   //SORTS 
   sorts.bubble_sort(ele, bubble, temp, frameCount%ele);
-  //println("Calls merge");
-  //delay(100);
   sorts.merge_sort(merge,frameCount%ele, ele, temp_array);
   sorts.insertion_sort(ele,insertion,frameCount%ele);
+  
   //bubble print
-  sorts.print_sort(ele, bubble, 0, 0);      /**/
+  sorts.print_sort(ele, bubble, 0, 0);
   //merge print
-  sorts.print_sort(ele, merge, 400, 0); // x 400
+  sorts.print_sort(ele, merge, 400, 0);
   //quick print
   //sorts.print_sort(ele,quick,800,0);
   //insertion print
   sorts.print_sort(ele,insertion,0,200);
-  
-  //sorts.print_size(ele,merge);
-  println("pause");
+
   /*Prints 120 text to the outp120screen. The if statements are used to change position
    of the word seconds as digits are added*/
   text(frameCount/fps, 32, 32);
