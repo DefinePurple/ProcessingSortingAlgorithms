@@ -56,7 +56,8 @@ void draw() {
   sorts.printSort(ele, selection, width/3,0);
   sorts.printSort(ele, insertion, (width/3)*2, 0);
   sorts.printSort(ele, merge, 0,height/3);
-  
+  sorts.printSort(ele, quick, width/3,height/3);
+  sorts.printSort(ele, heap, (width/3)*2, height/3);
   timer();
 }//End Draw
 
