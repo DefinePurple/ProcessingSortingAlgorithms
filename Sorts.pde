@@ -4,23 +4,23 @@ class Sorts {
   float current;  
 
   //Bubble sort
-  void bubble_sort(int ele, Line[] lines, Line temp, int counter) {
+  void bubbleSort(int ele, Line[] lines, Line temp, int counter) {
     if (counter != ele-1) {
-      for(i=0;i<ele-1;i++){
-      if (lines[i].size() > lines[i+1].size()) {
-        temp.top.y = lines[i].top.y;
-        lines[i].top.y = lines[i+1].top.y;
-        lines[i+1].top.y = temp.top.y;
-      }
+      for (i=0; i<ele-1; i++) {
+        if (lines[i].size() > lines[i+1].size()) {
+          temp.top.y = lines[i].top.y;
+          lines[i].top.y = lines[i+1].top.y;
+          lines[i+1].top.y = temp.top.y;
+        }
       }
     }
   }
 
 
   //Insertion Sort
-  void insertion_sort(int ele, Line[] lines, int counter) {
-    
-    if(counter != ele  && counter > 0){
+  void insertionSort(int ele, Line[] lines, int counter) {
+
+    if (counter != ele  && counter > 0) {
       current = lines[counter].top.y;
       j=counter-1;
       while ((lines[j].top.y < current) && (j>0)) {
@@ -32,13 +32,13 @@ class Sorts {
   }
 
   //Merge Sort   
-  void merge_sort(Line[] a, int low, int high, Line[] b) {
-    if ((high-low) >= 2){
+  void mergeSort(Line[] a, int low, int high, Line[] b) {
+    if ((high-low) >= 2) {
       mid = (high+low)/2;
-      merge_sort(a, low, mid, b);
-      merge_sort(a, mid+1, high, b);
+      mergeSort(a, low, mid, b);
+      mergeSort(a, mid+1, high, b);
       merge(a, low, mid, high, b);
-      copy_array(a, low, high, b);
+      copyArray(a, low, high, b);
     }
   }
 
@@ -57,7 +57,7 @@ class Sorts {
     }
   }
 
-  void copy_array(Line[] a, int low, int high, Line[] b) {
+  void copyArray(Line[] a, int low, int high, Line[] b) {
     for (i=low; i<high; i++) {
       a[i].top.y = b[i].top.y;
     }
@@ -67,14 +67,14 @@ class Sorts {
   //Quick Sort
 
   //Print each line for the specified sort.
-  void print_sort(int ele, Line[] lines, int pos_x, int pos_y) {
+  void printSort(int ele, Line[] lines, int pos_x, int pos_y) {
     for (int j=0; j<ele; j++) {
       lines[j].create(pos_x, pos_y);
     }
   }
- 
-  void print_size(int ele, Line[] lines){
-    for(i=0;i<ele;i++){
+
+  void printSize(int ele, Line[] lines) {
+    for (i=0; i<ele; i++) {
       print(lines[i].size());
       print(" ");
     }
