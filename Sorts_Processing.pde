@@ -35,7 +35,10 @@ Line[] original = new Line[ele];
 Line[] bubble = new Line[ele];
 Line[] merge = new Line[ele];
 Line[] insertion = new Line[ele];
-Line[] temp_array = new Line[ele];
+Line[] selection = new Line[ele];
+Line[] quick = new Line[ele];
+Line[] heap = new Line[ele];
+Line[] tempArray = new Line[ele];
 Line temp = new Line(top, bottom);
 Sorts sorts = new Sorts();
 
@@ -45,14 +48,15 @@ void draw() {
   screenSetup();
 
   sorts.bubbleSort(ele, bubble, temp, frameCount%ele);
-  sorts.mergeSort(merge, frameCount%ele, ele, temp_array);
+  sorts.mergeSort(merge, frameCount%ele, ele, tempArray);
   sorts.insertionSort(ele, insertion, frameCount%ele);  
-
+  sorts.selectionSort(ele, selection, temp, frameCount%ele);
+  
   sorts.printSort(ele, bubble, 0, 0);
-  sorts.printSort(ele, merge, (width/3), 0);
-  //sorts.print_sort(ele,quick,800,0);
-  sorts.printSort(ele, insertion, 0, height/3);
-
+  sorts.printSort(ele, selection, width/3,0);
+  sorts.printSort(ele, insertion, (width/3)*2, 0);
+  sorts.printSort(ele, merge, 0,height/3);
+  
   timer();
 }//End Draw
 
@@ -76,8 +80,11 @@ void init() {
     original[i] = new Line(top, bottom);
     bubble[i] = new Line(top, bottom);
     merge[i] = new Line(top, bottom);
+    selection[i] = new Line(top,bottom);
     insertion[i] = new Line(top, bottom);
-    temp_array[i] = new Line(top, bottom);
+    quick[i] = new Line(top,bottom);
+    heap[i] = new Line(top,bottom);
+    tempArray[i] = new Line(top,bottom);
     //randomly generate the top y point
     rand = 150 - (int) random(100);
     top.y = rand;
@@ -95,7 +102,7 @@ void screenSetup() {
   //vertical lines
   line(width/3, 0, width/3, height);
   line((width/3)*2, 0, (width/3)*2, height);
-
+  
   //horizontal lines
   line(0, (height/3)*2, width, (height/3)*2);
   line(0, (height/3), width, (height/3));
@@ -112,10 +119,11 @@ void screenSetup() {
 
   textAlign(CENTER, BOTTOM);
   text("Bubble Sort", width/6, (height/3));
-  text("Merge Sort", (width/6)*3, (height/3));
-  text("Quick Sort", (width/6)*5, (height/3));
-  text("Insertion Sort", width/6, ((height/3)*2));
-  text("Heap Sort", (width/6)*3, ((height/3)*2));
+  text("Selection Sort", (width/6)*3, (height/3));
+  text("Insertion Sort", (width/6)*5, (height/3));
+  text("Merge Sort", width/6, ((height/3)*2));
+  text("Quick Sort", (width/6)*3, ((height/3)*2));
+  text("Heap Sort",(width/6)*5,(height/3)*2);
   textAlign(CENTER, CENTER);
   text("Daniel Fitzpatrick", (width/6), (height/6)*5);
 }

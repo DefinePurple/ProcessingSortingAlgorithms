@@ -3,6 +3,8 @@ class Sorts {
   int mid;
   float current;  
 
+
+
   //Bubble sort
   void bubbleSort(int ele, Line[] lines, Line temp, int counter) {
     if (counter != ele-1) {
@@ -15,6 +17,24 @@ class Sorts {
       }
     }
   }
+
+
+
+  //Selection Sort
+  void selectionSort(int ele, Line[] lines, Line temp, int counter) {
+    if (counter<ele-2) {
+      min = counter;
+      for (j=counter; j<ele; j++) {
+        if (lines[min].top.y < lines[j].top.y) {
+          min = j;
+        }
+      }
+      temp.top.y = lines[min].top.y;
+      lines[min].top.y = lines[counter].top.y;
+      lines[counter].top.y = temp.top.y;
+    }
+  }
+
 
 
   //Insertion Sort
@@ -31,6 +51,8 @@ class Sorts {
     }
   }
 
+
+
   //Merge Sort   
   void mergeSort(Line[] a, int low, int high, Line[] b) {
     if ((high-low) >= 2) {
@@ -41,7 +63,6 @@ class Sorts {
       copyArray(a, low, high, b);
     }
   }
-
 
   void merge(Line[] a, int low, int mid, int high, Line[] b) {
     i = low;
@@ -63,9 +84,22 @@ class Sorts {
     }
   }
 
-
+  
+  
   //Quick Sort
-
+  void quickSort(){
+    
+  }
+  
+  //Heap Sort
+  void heapSort(){
+    
+  }
+  
+  
+  
+  
+  
   //Print each line for the specified sort.
   void printSort(int ele, Line[] lines, int pos_x, int pos_y) {
     for (int j=0; j<ele; j++) {
