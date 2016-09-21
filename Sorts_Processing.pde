@@ -1,11 +1,20 @@
 /*
-  points on edge:
- horizontal bubble:  Left -> (0,400) , (0,200) Righ -> (1200,400) , (1200,200)
- vertical bubble: Top -> (400,0) , (800, 0) Bottom -> (400,600) , (800,600)
+  Author: Daniel Fitzpatrick
  
- points of crossover:  Top-Left -> (400,200) Top-Right -> (800,200) Bottom-Left -> (400,400) Bottom-Right -> (800,400)
+  points on edge:
+  horizontal bubble:  
+    Left -> (0,400) , (0,200) 
+    Right -> (1200,400) , (1200,200)
+  vertical bubble: 
+    Top -> (400,0) , (800, 0) 
+    Bottom -> (400,600) , (800,600)
+ 
+  points of crossover:  
+    Top-Left -> (400,200) 
+    Top-Right -> (800,200) 
+    Bottom-Left -> (400,400) 
+    Bottom-Right -> (800,400)
  */
-
 
 void setup() {
   size(1200, 600);
